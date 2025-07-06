@@ -1,0 +1,32 @@
+pip install pyinstaller
+
+pyinstaller --noconfirm --onefile --windowed main.py
+
+# What the flags mean:
+--noconfirm: Skip overwrite prompts.
+
+--onefile: Bundle everything into one .exe.
+
+--windowed: Prevent the CMD console from appearing when the GUI runs (for Tkinter apps).
+
+
+You can include an icon like this (replace with your actual .ico file):
+
+pyinstaller --noconfirm --onefile --windowed --icon=appicon.ico main.py
+
+
+#Change .exe File Name
+When you package your app with pyinstaller, do this to change .exe name:
+
+pyinstaller main.py --name "Debnil-AI-Detector" --icon=icon.ico --noconsole --onefile
+
+
+ --name changes the final executable's name.
+You’ll get: dist/PlagAI-Detector.exe
+
+#Use --collect-submodules in your PyInstaller spec or command
+For the transformers library, you can tell PyInstaller to collect all submodules under transformers.models:
+
+#Command-line Solution
+
+pyinstaller --onefile --collect-submodules=transformers.models main.py
